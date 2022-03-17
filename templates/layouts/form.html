@@ -1,0 +1,9 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <form action="" method="post">
+    {% csrf_token %}
+        {{ form }}
+        <button type="submit">{{ request.title }}</button>
+    </form>
+{% endblock %}
