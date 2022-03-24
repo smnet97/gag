@@ -4,7 +4,7 @@
 {% block content %}
     <div class="row">
         <div class="col-lg-6 offset-lg-3">
-            <form action="" method="post" class="card">
+            <form action="" method="post" class="card" enctype="multipart/form-data">
                 <div class="card-header">
                     {{ request.title }}
                 </div>
@@ -13,7 +13,9 @@
                     {{ form|crispy }}
                 </div>
                 <div class="card-footer d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary">{{ request.title }}</button>
+                    <button type="submit" class="btn btn-primary">
+                        {{ value|default:request.button_title|default:request.title|default:'Saqlash' }}
+                    </button>
                 </div>
             </form>
         </div>

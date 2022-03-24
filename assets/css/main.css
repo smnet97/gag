@@ -1,0 +1,11 @@
+.cover {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.user-avatar {
+    width: 38px;
+    height: 38px;
+}
