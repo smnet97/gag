@@ -22,8 +22,8 @@ class ClientRegistration(View):
             user.set_password(user.password)
             user.save()
 
-            messages.success(request, _("{} muvaffaqiyatli ro'yxatdan o'tdingiz!".format(request.user.username)))
-
+            messages.success(request, _("Siz muvaffaqiyatli ro'yxatdan o'tdingiz!"))
+            messages.info(request, 'nimadir')
             return redirect('main:index')
         return render(request, 'layouts/form.html', {
             'form': form

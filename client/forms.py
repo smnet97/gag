@@ -9,7 +9,7 @@ class RegistrationForm(forms.ModelForm):
 
     def clean_confirm(self):
         if self.cleaned_data['confirm'] != self.cleaned_data['password']:
-            return ValidationError(_('Parollar bir xil emas !'))
+            raise ValidationError(_('Parollar bir xil emas !'))
 
         return self.cleaned_data['confirm']
 

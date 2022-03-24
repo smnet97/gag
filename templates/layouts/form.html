@@ -1,9 +1,21 @@
 {% extends 'layouts/base.html' %}
+{% load crispy_forms_filters %}
 
 {% block content %}
-    <form action="" method="post">
-    {% csrf_token %}
-        {{ form }}
-        <button type="submit">{{ request.title }}</button>
-    </form>
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <form action="" method="post" class="card">
+                <div class="card-header">
+                    {{ request.title }}
+                </div>
+                <div class="card-body">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </div>
+                <div class="card-footer d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">{{ request.title }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
