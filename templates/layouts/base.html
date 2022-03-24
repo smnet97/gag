@@ -18,13 +18,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'client:registration' %}">{% trans "Ro'yxatdan o'tish" %}</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link active"
+                           href="{% url 'client:logout' %}">{% trans "Chiqish" %}</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active"
+                           href="{% url 'client:registration' %}">{% trans "Ro'yxatdan o'tish" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'client:login' %}">{% trans "Tizimga kirish" %}</a>
+                    </li>
+                {% endif %}
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+                        {{ request.user.username }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#">Action</a></li>
@@ -40,13 +52,15 @@
     </div>
 </nav>
 
-{% if messages %}
-<div class="messages">
-    {% for message in messages %}
-    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
-    {% endfor %}
+<div class="container mt-3">
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
 </div>
-{% endif %}
 <div class="container mt-3">
     {% block content %}
 
