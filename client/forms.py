@@ -2,7 +2,7 @@ from django import forms
 from .models import User
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
-
+from captcha.fields import CaptchaField
 
 class RegistrationForm(forms.ModelForm):
     confirm = forms.CharField(max_length=50, widget=forms.PasswordInput, label=_('Parol takror'))
@@ -36,4 +36,5 @@ class LoginForm(forms.Form):
         label=_('Parol'),
         required=True
     )
+    captcha = CaptchaField()
 

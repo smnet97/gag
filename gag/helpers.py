@@ -13,7 +13,7 @@ class UploadTo:
         # my_photo.png => [my_photo, png]
         ext = os.path.splitext(filename)[1]
 
-        return "{}/{:%Y-%m}/{:%Y-%m-%d-%H-%M-%S}{}".format(
+        return "{}/{:%Y-%m}/{:%Y-%m-%d-%H-%M-%S-%f}{}".format(
             self.folder,
             datetime.now(),
             datetime.now(),

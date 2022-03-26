@@ -40,6 +40,7 @@ class ClientLogin(View):
         super().setup(request, *args, **kwargs)
 
         request.title = _('Tizimga kirish')
+        request.button_title = _('Tizimga kirish')
 
     def get(self, request):
         return render(request, 'layouts/form.html', {
